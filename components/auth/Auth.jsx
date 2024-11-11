@@ -4,7 +4,7 @@ import CustomInput from "./CustomInput";
 
 export default function Auth({ isLogin }) {
   return (
-    <section className="bg-white w-full px-4 py-6 max-w-[30rem] flex flex-col gap-3">
+    <section className="bg-white w-full px-6 py-6 max-w-[30rem] flex flex-col gap-3 rounded-md">
       <form action="" className="flex flex-col gap-3">
         <h1 className="text-3xl font-bold tracking-wide font-open-sans w-full py-3 border-b border-black">
           {isLogin ? "Login" : "Register"}
