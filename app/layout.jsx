@@ -1,6 +1,5 @@
-import localFont from "next/font/local";
-import "./globals.css";
 import Header from "@/components/shared/Header";
+import "./globals.css";
 
 export default function RootLayout({ children }) {
   return (
