@@ -2,6 +2,8 @@
 
 import ProductCard from "@/components/card/ProductCard";
 import ImageGallery from "@/components/ImageGallery";
+import Image from 'next/image';
+import { FaStar } from 'react-icons/fa';
 
 const ProductPage = () => {
     const images = [
@@ -19,8 +21,14 @@ const ProductPage = () => {
         size: "Size: M",
     };
 
+    const storeReviews = [
+        { name: "Lovina", rating: 5, comment: "Turns out bajunya super lucu dilihat langsung 😍." },
+        { name: "Avant garde king", rating: 5, comment: "Sweet seller 💜" },
+        { name: "Farah", rating: 5, comment: "Bagus banget!! Harum fresh abis laundry 🧼" },
+    ];
+
     return (
-        <div className="max-w-4xl mx-auto p-6">
+        <div className="max-w-5xl mx-auto p-6">
             <div className="flex">
                 {/* Image Gallery */}
                 <ImageGallery images={images} />
@@ -43,6 +51,10 @@ const ProductPage = () => {
                             Asics vintage 90s - yellow line<br />Size XL<br />
                             Length 71cm<br />Pit to pit 60cm<br />Sleeve 58 <br />
                             Very good condition, it would be a shame to miss it</p>
+                        <br />
+                        Asics vintage 90s - yellow line<br />Size XL<br />
+                        Length 71cm<br />Pit to pit 60cm<br />Sleeve 58 <br />
+                        Very good condition, it would be a shame to miss it
                     </div>
                     {/* Store Info */}
                     <div className="mt-6">
@@ -56,15 +68,84 @@ const ProductPage = () => {
                     </div>
                 </div>
             </div>
+
             <div className="mb-4 mt-4 border-b border-gray-300"></div>
-            <h2 className="text-xl font-semibold mb-2">Lainnya dari Seller</h2>
-            <ProductCard product={product} />
-            <div className="flex">
-                <div className="w-1/3 pr-4">
-                    <h2 className="text-xl font-semibold mb-2">Review Toko</h2>
+
+            {/* Other Product */}
+            <div className="flex justify-between items-center mb-2">
+                <h2 className="text-xl font-semibold">Lainnya dari Seller</h2>
+                <a href="#" className="text-custom-sage font-semibold">Lihat semua</a>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                <ProductCard product={product} />
+                <ProductCard product={product} />
+                <ProductCard product={product} />
+                <ProductCard product={product} />
+                <ProductCard product={product} />
+            </div>
+
+            {/* Store Reviews */}
+            <div className="mt-12 flex">
+                <div className="w-1/3 pr-4 flex flex-col items-start">
+                    <h2 className="text-xl font-semibold mb-2 text-left">Review Toko</h2>
+                    <div className="mt-6 flex items-center justify-center w-full">
+                        <FaStar className="text-4xl text-yellow-500" />
+                        <p className="text-4xl ml-2">
+                            5.0
+                            <span className="text-gray-500 text-xl">/5.0</span>
+                        </p>
+                    </div>
+                    <div className="mt-2 items-center justify-center w-full">
+                        <p className="text-center">100% pembeli merasa puas</p>
+                        <p className="text-center text-gray-500">230 rating &bull; 71 ulasan</p>
+                    </div>
+                    {/* Stars Bar */}
+                    <div className="mt-4 w-full px-4"> {/* Tambahkan kelas px-4 untuk padding horizontal */}
+                        {[
+                            { stars: 5, count: 71 },
+                            { stars: 4, count: 0 },
+                            { stars: 3, count: 0 },
+                            { stars: 2, count: 0 },
+                            { stars: 1, count: 0 },
+                        ].map((review, index) => (
+                            <div key={index} className="flex items-center mb-2">
+                                <span className="w-12 text-sm flex-shrink-0">{review.stars} <FaStar className="inline text-yellow-500" /></span> {/* Tambahkan flex-shrink-0 */}
+                                <div className="w-full bg-gray-200 rounded-full h-2 mx-2"> {/* Ubah ml-2 menjadi mx-2 untuk margin horizontal */}
+                                    <div className="bg-custom-sage h-2 rounded-full" style={{ width: `${(review.count / 71) * 100}%` }}></div>
+                                </div>
+                                <span className="ml-2 text-sm text-gray-600 flex-shrink-0">{review.count}</span> {/* Tambahkan flex-shrink-0 */}
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div className="w-2/3 pr-4">
-                    <h2 className="text-xl font-semibold mb-2">Review Toko</h2>
+
+                {/* Review Toko dari Produk yang Lain */}
+                <div className="w-full lg:w-2/3">
+                    <h2 className="text-xl font-semibold mb-4">Review Toko dari Produk yang Lain</h2>
+                    <div className="space-y-6">
+                        {storeReviews.map((review, index) => (
+                            <div key={index} className="flex items-start p-4 border-b border-gray-300">
+                                <Image
+                                    src={images[index % images.length]} // Menggunakan gambar berdasarkan indeks
+                                    alt={`Product image ${index + 1}`}
+                                    width={70}
+                                    height={70}
+                                    className="rounded-lg flex-shrink-0"
+                                />
+                                <div className="ml-4">
+                                    <div className="flex items-center">
+                                        <p className="font-semibold text-lg ml-2">{review.name}</p>
+                                        <div className="flex ml-2">
+                                            {[...Array(5)].map((_, i) => (
+                                                <FaStar key={i} className="text-yellow-500 text-lg" />
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <p className="text-md text-gray-700 mt-2">{review.comment}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
