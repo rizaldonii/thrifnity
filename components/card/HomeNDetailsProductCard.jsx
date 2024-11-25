@@ -37,7 +37,7 @@ const HomeNDetailsProductCard = ({ product }) => {
             {/* Favorite */}
             <button
                 onClick={toggleFavorite}
-                className="p-2 absolute bottom-0 right-2 hover:bg-gray-200"> {/* Menambahkan bottom-4 */}
+                className="p-2 absolute bottom-0 right-2 hover:bg-gray-200">
                 {isFavorite ? (
                     <MdFavorite className="w-6 h-6 text-red-500" />
                 ) : (
