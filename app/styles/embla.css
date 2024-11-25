@@ -26,7 +26,6 @@
     align-items: center;
     transform: translateY(-50%);
     pointer-events: none;
-    /* Menghindari masalah klik di luar tombol */
     padding: 0 10px;
 }
 
@@ -37,7 +36,6 @@
     padding: 10px;
     cursor: pointer;
     pointer-events: all;
-    /* Membolehkan klik pada tombol */
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background 0.3s, transform 0.3s;

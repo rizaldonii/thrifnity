@@ -1,6 +1,6 @@
 "use client";
 
-import ProductCard from "@/components/card/ProductCard";
+import ProductCard from "@/components/card/HomeNDetailsProductCard";
 import ImageGallery from "@/components/ImageGallery";
 import Image from 'next/image';
 import { FaStar } from 'react-icons/fa';
@@ -100,7 +100,7 @@ const ProductPage = () => {
                         <p className="text-center text-gray-500">230 rating &bull; 71 ulasan</p>
                     </div>
                     {/* Stars Bar */}
-                    <div className="mt-4 w-full px-4"> {/* Tambahkan kelas px-4 untuk padding horizontal */}
+                    <div className="mt-4 w-full px-4">
                         {[
                             { stars: 5, count: 71 },
                             { stars: 4, count: 0 },
@@ -109,11 +109,11 @@ const ProductPage = () => {
                             { stars: 1, count: 0 },
                         ].map((review, index) => (
                             <div key={index} className="flex items-center mb-2">
-                                <span className="w-12 text-sm flex-shrink-0">{review.stars} <FaStar className="inline text-yellow-500" /></span> {/* Tambahkan flex-shrink-0 */}
-                                <div className="w-full bg-gray-200 rounded-full h-2 mx-2"> {/* Ubah ml-2 menjadi mx-2 untuk margin horizontal */}
+                                <span className="w-12 text-sm flex-shrink-0">{review.stars} <FaStar className="inline text-yellow-500" /></span>
+                                <div className="w-full bg-gray-200 rounded-full h-2 mx-2">
                                     <div className="bg-custom-sage h-2 rounded-full" style={{ width: `${(review.count / 71) * 100}%` }}></div>
                                 </div>
-                                <span className="ml-2 text-sm text-gray-600 flex-shrink-0">{review.count}</span> {/* Tambahkan flex-shrink-0 */}
+                                <span className="ml-2 text-sm text-gray-600 flex-shrink-0">{review.count}</span>
                             </div>
                         ))}
                     </div>
@@ -126,7 +126,7 @@ const ProductPage = () => {
                         {storeReviews.map((review, index) => (
                             <div key={index} className="flex items-start p-4 border-b border-gray-300">
                                 <Image
-                                    src={images[index % images.length]} // Menggunakan gambar berdasarkan indeks
+                                    src={images[index % images.length]}
                                     alt={`Product image ${index + 1}`}
                                     width={70}
                                     height={70}

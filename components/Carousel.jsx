@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
-import Image from 'next/image';
 import '@/app/styles/embla.css';
+import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
 const Carousel = () => {
     const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -10,7 +10,7 @@ const Carousel = () => {
         [
             Autoplay({
                 delay: 3000, // Waktu pergeseran otomatis dalam milidetik (3 detik)
-                stopOnInteraction: false, // Lanjutkan autoplay meskipun ada interaksi pengguna
+                stopOnInteraction: false,
             }),
         ]
     );
